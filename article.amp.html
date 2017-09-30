@@ -31,6 +31,7 @@
         width: auto;
         margin: 0;
         padding: 0;
+        font-family: 'Raleway', sans-serif;
       }
 
       header {
@@ -51,8 +52,54 @@
         padding: 0.5em;
         margin: 0.5em;
       }
+      amp-fit-text {
+        white-space: normal;
+      }
+      home-button {
+        margin-top: 8px;
+      }
+      .headerbar {
+        height: 50px;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .site-name {
+        flex: 1;
+        margin-left: -36px;
+      }
+      article {
+        margin-top: 50px;
+      }
+      .hamburger {
+        padding-left: 10px;
+      }
+      .sidebar {
+        padding: 10px;
+        margin: 0;
+      }
+      .sidebar > li {
+        list-style: none;
+        margin-bottom:10px;
+      }
+      .sidebar a {
+        text-decoration: none;
+      }
+      .close-sidebar {
+        font-size: 1.5em;
+        padding-left: 5px;
+      }
     </style>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
+    <script async custom-element="amp-fit-text" src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     <script type="application/ld+json">
     {
      "@context": "http://schema.org",
@@ -89,9 +136,54 @@
     </script>
   </head>
   <body>
-    <header>
-      News Site
+    <header class="headerbar">
+      <div role="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</div>
+      <div class="site-name">News Site</div>
     </header>
+    <amp-sidebar id="sidebar1" layout="nodisplay" side="left">
+      <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div>
+      <ul class="sidebar">
+        <li><a href="#">Example 1</a></li>
+        <li><a href="#">Example 2</a></li>
+        <li><a href="#">Example 3</a></li>
+      </ul>
+    </amp-sidebar>
+
+    <amp-youtube
+      data-videoid="npum8JsITQE"
+      layout="responsive"
+      width="480"
+      height="270">
+      <div fallback>
+        <p>The video could not be loaded.</p>
+      </div>
+    </amp-youtube>
+
+    <amp-twitter
+      width="486"
+      height="657"
+      layout="responsive"
+      data-tweetid="638793490521001985">
+    </amp-twitter>
+
+    <amp-fit-text width="400" height="70" layout="responsive" max-font-size="42">
+      Hello!
+    </amp-fit-text>
+
+    <amp-carousel layout="fixed-height" height="250" type="carousel" >
+      <amp-img src="blocky-mountains-1.jpg" width="300" height="250"></amp-img>
+
+      <amp-ad width="300" height="250"
+              type="doubleclick"
+              data-slot="/35096353/amptesting/image/static">
+        <div placeholder>This ad is still loading.</div>
+      </amp-ad>
+
+      <amp-fit-text width="300" height="250" layout="fixed">
+        Big, bold article quote goes here.
+      </amp-fit-text>
+    </amp-carousel>
+
     <article>
       <h1>Article Name</h1>
 
